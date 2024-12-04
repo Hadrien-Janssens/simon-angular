@@ -1,0 +1,21 @@
+<button (click)="goBack()">retour</button>
+<div *ngIf="pokemon" class="card pokemon-card">
+  <div class="card-content">
+    <figure>
+      <img [src]="pokemon.picture" alt="" width="50px" />
+    </figure>
+    <div>
+      <p>
+        {{ pokemon.name }}
+      </p>
+      <p>{{ pokemon.created | date : "dd/MM/Y" }}</p>
+      <span
+        *ngFor="let type of pokemon.types"
+        class="{{ type | pokemonTypeColor }}"
+      >
+        {{ type }}
+      </span>
+    </div>
+  </div>
+</div>
+<div *ngIf="!pokemon">Aucun pokemon n'a été trouvé pour l'id : {{ id }}</div>

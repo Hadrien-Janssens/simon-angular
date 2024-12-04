@@ -1,0 +1,27 @@
+<div class="pokemon-grid">
+  <div
+    *ngFor="let pokemon of pokemonList"
+    class="card pokemon-card"
+    (click)="goToDetail(pokemon.id)"
+  >
+    <div class="card-content">
+      <figure>
+        <img [src]="pokemon.picture" alt="" width="50px" />
+      </figure>
+      <div>
+        <p>
+          {{ pokemon.name }}
+        </p>
+        <p>{{ pokemon.created | date : "dd/MM/Y" }}</p>
+        <span
+          *ngFor="let type of pokemon.types"
+          class="{{ type | pokemonTypeColor }}"
+        >
+          {{ type }}
+        </span>
+      </div>
+
+      <button (click)="selectedPokemon(pokemon)">Sélectionner</button>
+    </div>
+  </div>
+</div>
